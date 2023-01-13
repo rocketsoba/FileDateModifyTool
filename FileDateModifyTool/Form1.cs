@@ -16,10 +16,6 @@ namespace FileDateModifyTool
         public Form1()
         {
             InitializeComponent();
-            this.listView1.Columns.Add("ファイル", 200, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("更新日時", 120, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("作成日時", 120, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("アクセス日時", 120, HorizontalAlignment.Left);
         }
 
         private void Form1_DragEnter(object sender, DragEventArgs e)
