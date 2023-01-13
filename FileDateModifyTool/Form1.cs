@@ -18,7 +18,29 @@ namespace FileDateModifyTool
             InitializeComponent();
         }
 
-        private void Form1_DragEnter(object sender, DragEventArgs e)
+        private void listView1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            this.textBox1.Text = files[0];
+            this.textBox2.Text = files[0];
+
+            if (this.textBox1.Text == "")
+            {
+                return;
+            }
+
+            try
+            {
+                string[] info = FileSystemLogic.ReadFileSystemInfo(files[0]);
+                this.listView1.Items.Add(new ListViewItem(info));
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void listView1_DragEnter(object sender, DragEventArgs e)
         {
             // DataFormats.FileDropはすべてのドロップ可能なファイル、フォルダを指すっぽい
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -31,11 +53,26 @@ namespace FileDateModifyTool
             }
         }
 
-        private void Form1_DragDrop(object sender, DragEventArgs e)
+        private void textBox1_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             this.textBox1.Text = files[0];
+        }
+
+        private void textBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            this.listView1_DragEnter(sender, e);
+        }
+
+        private void textBox2_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             this.textBox2.Text = files[0];
+        }
+
+        private void textBox2_DragEnter(object sender, DragEventArgs e)
+        {
+            this.listView1_DragEnter(sender, e);
         }
 
         // 入力ファイルの参照ボタン
