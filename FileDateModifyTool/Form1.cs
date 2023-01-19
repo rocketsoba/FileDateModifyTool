@@ -125,7 +125,15 @@ namespace FileDateModifyTool
 
             try
             {
-                DateTime selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                DateTime selectedDateTime;
+                if (radioButton1.Checked == true)
+                {
+                    selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                }
+                else
+                {
+                    selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[2].Text);
+                }
                 FileSystemLogic.SetTimestamp(this.textBox2.Text, selectedDateTime, "LastWriteTime");
             }
             catch (Exception)
@@ -144,7 +152,15 @@ namespace FileDateModifyTool
 
             try
             {
-                DateTime selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                DateTime selectedDateTime;
+                if (radioButton1.Checked == true)
+                {
+                    selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                }
+                else
+                {
+                    selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[2].Text);
+                }
                 FileSystemLogic.SetTimestamp(this.textBox2.Text, selectedDateTime, "CreationTime");
             }
             catch (Exception)
@@ -164,7 +180,15 @@ namespace FileDateModifyTool
 
             try
             {
-                DateTime selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                DateTime selectedDateTime;
+                if (radioButton1.Checked == true)
+                {
+                    selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                }
+                else
+                {
+                    selectedDateTime = DateTime.Parse(listView1.SelectedItems[0].SubItems[2].Text);
+                }
                 FileSystemLogic.SetTimestamp(this.textBox2.Text, selectedDateTime, "LastAccessTime");
             }
             catch (Exception)
